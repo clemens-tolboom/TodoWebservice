@@ -8,13 +8,9 @@ You need a JSON client to interact with the web service. cURL examples are provi
 
 - Java 17
 
-## Installing
+## Get sources
 
-Clone the repository:
-
-```
-git clone
-```
+Clone the repository from https://github.com/clemens-tolboom/TodoWebservice
 
 ## Building the project
 
@@ -29,12 +25,15 @@ Run the following command :
 ```
 ./gradlew run
 ```
+## Persistence
+
+The [h2](https://h2database.com/html/main.html) database is located in `./database/todo.db.mv.db`
 
 ## Connecting to the web service
 
 Visit http://localhost:8080/ in your browser. There you will see a list of all the todos.
 
-You can now use the following endpoints to interact with the Todo web service:
+You can use the following endpoints to interact with the Todo web service using your own client:
 
 - GET /todos: Get all todos
 - GET /todos/:id: Get a todo by ID
@@ -55,7 +54,8 @@ curl -X GET http://localhost:8080/todos
 #### Read
 
 ```bash
-curl -X GET http://localhost:8080/todos/1
+ID=17
+curl -X GET http://localhost:8080/todos/$ID
 ```
 
 #### Create
@@ -67,12 +67,14 @@ curl -X POST -H "Content-Type: application/json" -d '{"title": "My todo", "compl
 #### Update
 
 ```bash
-curl -X PUT -H "Content-Type: application/json" -d '{"title": "My todotodo", "completed": true}' http://localhost:8080/todos/16
+ID=12
+curl -X PUT -H "Content-Type: application/json" -d '{"title": "My todotodo", "completed": true}' http://localhost:8080/todos/$ID
 ```
 #### DELETE
 
 ```bash
-curl -X DELETE http://localhost:8080/todos/33
+ID=123
+curl -X DELETE http://localhost:8080/todos/$ID
 ```
 
 ## Caveats
