@@ -49,7 +49,7 @@ public class TodoWebService {
             System.exit(1);
         }
 
-        logger.info(String.format("Listening on http://localhost:%d/", port()));
+        logger.info(String.format("Listening on http://localhost:%d/", the_port));
 
         after((req, res) -> {
             logger.info(res.status() + ": " + req.ip() + " " + req.requestMethod() + " " + req.url());
